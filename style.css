@@ -22,6 +22,10 @@ button {
   background-color: #17a2b8 !important;
 }
 
+#high-score {
+  font-size: 20px;
+  list-style: none;
+}
 /* Footer adjustments */
 .footer {
     margin-top: 4%;
