@@ -6,7 +6,7 @@ $("#start-button").click(function () {
 $("#highscore-button").click(function () {
   var highScores = JSON.parse(localStorage.getItem("highScores"));
 
-  $("#high-score").append(highScores.map(score => {
+  $("#high-score").append(highScores.map(function(score) {
     return `<li class="high-score">${score.name} - ${score.score}</li>`;    
   }));
   this.disabled = true;

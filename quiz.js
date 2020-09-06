@@ -3,7 +3,7 @@ var question = document.getElementById("question");
 var answers = Array.from(document.getElementsByClassName("answer-button"));
 var questionCountInfo = document.getElementById("questionCounter");
 var scoreInfo = document.getElementById("score");
-var countdownEL = document.getElementById("timeCounter")
+var countdownEL = document.getElementById("timeCounter");
 var currentQuestion = {};
 var correctAnswer = true;
 var score = 0;
@@ -57,7 +57,7 @@ var questions = [
     answer3: 'h1.all {background-color:#FFFFF}',
     answer4: 'h1(all) {background-color:#FFFF}',
     answer: 2
-  },  
+  },
   {
     question: 'How do you display hyperlinks without an underline?',
     answer1: 'a{text-decoration:none;}',
@@ -178,74 +178,71 @@ var questions = [
     answer4: '<ul>',
     answer: 4
   },
-]
+];
 var correctAnswer = 10;
-var wrongAnswer = 3;
 var maxQuestions = 7;
 var time = 40;
 
-var timer = function() {
-  x = time--;
+function timer() {
+  var x = time--;
   if (time < 40) {
     countdownEL.innerHTML = x;
   }
-  if (x <1) {
-    localStorage.setItem("mostRecentScore", score)
-    return window.location.href="endscreen.html";
+  if (x < 1) {
+    localStorage.setItem("mostRecentScore", score);
+    return window.location.href = "endscreen.html";
   }
-
-}
-update = setInterval("timer()", 1000)
+};
+setInterval("timer()", 1000);
 
 function startGame() {
   questionCounter = 0;
   score = 0;
   time = 40;
-  timer()
-  availableQuestions = [...questions]
+  timer();
+  availableQuestions = [...questions];
   console.log(availableQuestions);
   getNextQuestion();
 }
 
 function getNextQuestion() {
   if (availableQuestions.length === 0) {
-    localStorage.setItem("mostRecentScore", score)
-    return window.location.href="endscreen.html";
+    localStorage.setItem("mostRecentScore", score);
+    return window.location.href = "endscreen.html";
   }
   questionCounter++;
-  questionCountInfo.innerText = questionCounter + "/" + maxQuestions
+  questionCountInfo.innerText = questionCounter + "/" + maxQuestions;
   if (questionCounter === maxQuestions) {
-    localStorage.setItem("mostRecentScore", score)
-    return window.location.href="endscreen.html";
+    localStorage.setItem("mostRecentScore", score);
+    return window.location.href = "endscreen.html";
   }
 
   var questionIndex = Math.floor(Math.random() * availableQuestions.length);
   currentQuestion = availableQuestions[questionIndex];
   question.innerText = currentQuestion.question;
 
-  answers.forEach(answer => {
+  answers.forEach(function (answer) {
     var number = answer.dataset['number'];
-    answer.innerText = currentQuestion["answer" + number]
+    answer.innerText = currentQuestion["answer" + number];
   });
 
-  availableQuestions.splice(questionIndex, 1)
+  availableQuestions.splice(questionIndex, 1);
 
   correctAnswer = true;
+}
 
-};
-
-answers.forEach(answer => {
+answers.forEach(function (answer) {
   answer.addEventListener("click", function (event) {
     var selected = event.target;
     var selectedAnswer = selected.dataset["number"];
-    console.log(selectedAnswer == currentQuestion.answer)
+    console.log(selectedAnswer == currentQuestion.answer);
 
     if ((selectedAnswer == currentQuestion.answer) === true) {
       score = score + 10;
-      time  = time + 5;
-    } else{
+      time = time + 5;
+    } else {
       score = score - 3;
-      time = time -3;
+      time = time - 3;
     }
     scoreInfo.innerText = score;
 
@@ -254,6 +251,6 @@ answers.forEach(answer => {
 });
 
 
-scoreInfo.innerText = score
+scoreInfo.innerText = score;
 
-startGame()
+startGame();
