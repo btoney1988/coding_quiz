@@ -243,7 +243,7 @@ answers.forEach(function (answer) {
     // If answer is correct score/timer will increase
     if ((selectedAnswer == currentQuestion.answer) === true) {
       score = score + 10;
-      time = time + 5;
+      time = time + 3;
     }
     // If answer is wrong score/timer will decrease 
     else {

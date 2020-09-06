@@ -5,7 +5,6 @@ var finalScore = document.getElementById("final-score");
 var mostRecentScore = localStorage.getItem("mostRecentScore");
 var highScores = JSON.parse(localStorage.getItem("highScores")) || [];
 
-
 console.log(highScores);
 
 // Show the players score in finalScore section
