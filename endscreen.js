@@ -1,3 +1,4 @@
+// DOM Elements
 var username = document.getElementById("name");
 var submitButton = document.getElementById("submit");
 var finalScore = document.getElementById("final-score");
@@ -6,30 +7,34 @@ var highScores = JSON.parse(localStorage.getItem("highScores")) || [];
 
 console.log(highScores);
 
+// Show the players score in finalScore section
 finalScore.innerText = mostRecentScore;
 
+// Event listener to ensure that user has inputted a name before submitting
 username.addEventListener("keyup", function () {
   submitButton.disabled = !username.value;
 });
 
+// Save the name and score to the local storage
 document.querySelector("form").onsubmit = function (event) {
   event.preventDefault();
+  // Saving name and score
   var name = document.getElementById("name").value;
   localStorage["name"] = name;
-  // console.log(localStorage);
   var score = {
     score: mostRecentScore,
     name: username.value
   };
-  // Adding, sorting, then cutting the lowest score out
+  // Adding, sorting, then cutting the lowest score out. Max number is 5 scores
   highScores.push(score);
   highScores.sort((x, y) => y.score - x.score);
   highScores.splice(5);
-
+  // Saving final high scores to local storage
   localStorage.setItem("highScores", JSON.stringify(highScores));
   return window.location.href="home.html";
 };
 
+// Buttons will revert to correct page
 $("#start-button").click(function () {
   window.location.href = "quiz.html";
 });

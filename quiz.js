@@ -9,6 +9,7 @@ var correctAnswer = true;
 var score = 0;
 var questionCounter = 0;
 var availableQuestions = [];
+// Questions 21 total
 var questions = [
   {
     question: 'How to write an IF statement for executing some code if "i" is NOT equal to 5?',
@@ -182,7 +183,7 @@ var questions = [
 var correctAnswer = 10;
 var maxQuestions = 7;
 var time = 40;
-
+// Timer function
 function timer() {
   var x = time--;
   if (time < 40) {
@@ -193,8 +194,9 @@ function timer() {
     return window.location.href = "endscreen.html";
   }
 };
+// Timer interval to 1 second
 setInterval("timer()", 1000);
-
+// Setting up the game when someone clicks on the start button
 function startGame() {
   questionCounter = 0;
   score = 0;
@@ -204,43 +206,42 @@ function startGame() {
   console.log(availableQuestions);
   getNextQuestion();
 }
-
+// Function to get the next question 
 function getNextQuestion() {
-  if (availableQuestions.length === 0) {
-    localStorage.setItem("mostRecentScore", score);
-    return window.location.href = "endscreen.html";
-  }
   questionCounter++;
   questionCountInfo.innerText = questionCounter + "/" + maxQuestions;
+  // When player reaches 7 questions their score will be save to local storage and they will be reverted to the endscreen
   if (questionCounter === maxQuestions) {
     localStorage.setItem("mostRecentScore", score);
     return window.location.href = "endscreen.html";
   }
-
+  // Randomizing each question chosen from the questions array 
   var questionIndex = Math.floor(Math.random() * availableQuestions.length);
   currentQuestion = availableQuestions[questionIndex];
   question.innerText = currentQuestion.question;
-
+  // Checking to make sure the answer the user chose was correct
   answers.forEach(function (answer) {
     var number = answer.dataset['number'];
     answer.innerText = currentQuestion["answer" + number];
   });
 
   availableQuestions.splice(questionIndex, 1);
-
+  
   correctAnswer = true;
 }
-
+// Function to add score and time penalty/reward
 answers.forEach(function (answer) {
   answer.addEventListener("click", function (event) {
     var selected = event.target;
     var selectedAnswer = selected.dataset["number"];
     console.log(selectedAnswer == currentQuestion.answer);
-
+    // If answer is correct score/timer will increase
     if ((selectedAnswer == currentQuestion.answer) === true) {
       score = score + 10;
       time = time + 5;
-    } else {
+    }
+    // If answer is wrong score/timer will decrease 
+    else {
       score = score - 3;
       time = time - 3;
     }
@@ -250,7 +251,7 @@ answers.forEach(function (answer) {
   });
 });
 
-
+// Display 0 in the score HUD at beginning
 scoreInfo.innerText = score;
 
 startGame();
