@@ -31,7 +31,7 @@ document.querySelector("form").onsubmit = function (event) {
   highScores.splice(5);
   // Saving final high scores to local storage
   localStorage.setItem("highScores", JSON.stringify(highScores));
-  return window.location.href="home.html";
+  return window.location.href="index.html";
 };
 
 // Buttons will revert to correct page
@@ -39,5 +39,5 @@ $("#start-button").click(function () {
   window.location.href = "quiz.html";
 });
 $("#home-button").click(function () {
-  window.location.href = "home.html";
+  window.location.href = "index.html";
 });
