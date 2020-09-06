@@ -3,7 +3,7 @@
 ## Coding Quiz
  - This is a coding quiz. This is a timed quiz that subtracts for wrong answers and adds for correct answers. Each correct answer is 10 points and wrong answer is -3 points. There is a heads up display while playing the game to inform user of the time, how many quiestions are left, and how the user is doing.  
  - There are 3 pages that are all connected using javascript. For the quiz.js and endscreen.js I tried to use mostly javascript and for the home.js I used jQuery.
- - I received some help from youTube channel James Q Quick "https://www.youtube.com/channel/UC-T8W79DN6PBnzomelvqJYw" and W3 schools "https://www.w3schools.com/"
+ - I received some help from youTube channel James Q Quick "https://www.youtube.com/channel/UC-T8W79DN6PBnzomelvqJYw" and W3 schools helped out with the quiz questions "https://www.w3schools.com/"
 
  ## Links
  -  Coding Quiz - "https://btoney1988.github.io/coding_quiz/"
