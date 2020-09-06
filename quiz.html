@@ -6,10 +6,9 @@
   <!-- Viewport set to the device. -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Coding Quiz</title>
-  <!-- Linking bootstrap, font awesome, and CSS stylesheet for design -->
+  <!-- Linking bootstrap, and CSS stylesheet for design -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -25,11 +24,11 @@
   <main class="container">
     <div class="row">
       <div class="col-lg-12">
-        <!-- Card -->
+      <!-- Question and Answer Card -->
       </div>
       <div class="card text-center mx-auto" id="game">
         <div class="card-body">
-          <h3 class="card-title" id="question">Question</h3>
+          <h4 class="card-title" id="question"></h4>
           <div class="row">
             <div class="col text-center">
               <button type="button" class="btn btn-info answer-button" data-number="1">Answer 1</button>
@@ -50,27 +49,35 @@
               <button type="button" class="btn btn-info answer-button" data-number="4">Answer 4</button>
             </div>
           </div>
+          <!-- Heads Up Display set to the Footer of the card -->
           <div class="card-footer">
             <div class="row">
-                <div class="col-6 question-hud">
-                  <h4 class="title">
-                    Question
-                  </h4>
-                  <h5 class="hud-info" id="questionCounter">
-                  </h5>
-                </div>
-                <div class="col-6 score-hud">
-                  <h4 class="title">
-                    Score
-                  </h4>
-                  <h5 class="hud-info" id="score">
-                  </h5>
-                </div>
+              <div class="col-4 question-hud">
+                <h6 class="title">
+                  Question
+                </h6>
+                <h7 class="hud-info" id="questionCounter">
+                </h7>
+              </div>
+              <div class="col-4 score-hud">
+                <h6 class="title">
+                  Score
+                </h6>
+                <h7 class="hud-info" id="score">
+                </h7>
+              </div>
+              <div class="col-4 time-hud">
+                <h6 class="title">
+                  Time
+                </h6>
+                <h7 class="hud-info" id="timeCounter">
+                </h7>
               </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
     </div>
 
   </main>

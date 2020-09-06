@@ -6,7 +6,7 @@
   <!-- Viewport set to the device. -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Start Page</title>
-  <!-- Linking bootstrap, font awesome, and CSS stylesheet for design -->
+  <!-- Linking bootstrap, and CSS stylesheet for design -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
   <link rel="stylesheet" href="style.css">
@@ -23,8 +23,23 @@
   <!-- Main -->
   <main class="container">
     <div class="row">
-      <div class="col-lg-12">
-        <!-- Card -->
+      <!-- Rules List -->
+      <div class="col-lg-6">
+        <div class="card text-center mx-auto rule-list">
+          <div class="card-body">
+            <h2>Multiple Choice Quiz Rules:</h2>
+            <ol>
+              <li>There are 7 questions.</li>
+              <li>Questions are picked at random from a list of 21 questions.</li>
+              <li>There is a 40 second timer for the quiz.</li>
+              <li>Correct answer = 10 points + 5 seconds added to timer</li>
+              <li>Wrong answer = -3 points + 3 seconds subtracted from timer</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <!-- Play Buttone/ High Scores -->
+      <div class="col-lg-6">
         <div class="card text-center mx-auto start-card">
           <div class="card-body">
             <h2>Lets Play!</h2>
