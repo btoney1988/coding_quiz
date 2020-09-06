@@ -5,6 +5,7 @@ var finalScore = document.getElementById("final-score");
 var mostRecentScore = localStorage.getItem("mostRecentScore");
 var highScores = JSON.parse(localStorage.getItem("highScores")) || [];
 
+
 console.log(highScores);
 
 // Show the players score in finalScore section
@@ -20,18 +21,20 @@ document.querySelector("form").onsubmit = function (event) {
   event.preventDefault();
   // Saving name and score
   var name = document.getElementById("name").value;
-  localStorage["name"] = name;
+  localStorage.name = name;
   var score = {
     score: mostRecentScore,
     name: username.value
   };
   // Adding, sorting, then cutting the lowest score out. Max number is 5 scores
   highScores.push(score);
-  highScores.sort((x, y) => y.score - x.score);
+  highScores.sort(function (x, y){
+    return y.score - x.score;
+  });
   highScores.splice(5);
-  // Saving final high scores to local storage
+  // Saving final high scores to local storage, turning highscores back into a string
   localStorage.setItem("highScores", JSON.stringify(highScores));
-  return window.location.href="index.html";
+  window.location.href="index.html";
 };
 
 // Buttons will revert to correct page

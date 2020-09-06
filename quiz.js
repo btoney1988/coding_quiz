@@ -4,6 +4,7 @@ var answers = Array.from(document.getElementsByClassName("answer-button"));
 var questionCountInfo = document.getElementById("questionCounter");
 var scoreInfo = document.getElementById("score");
 var countdownEL = document.getElementById("timeCounter");
+
 var currentQuestion = {};
 var correctAnswer = true;
 var score = 0;
@@ -177,43 +178,46 @@ var questions = [
     answer2: '<list>',
     answer3: '<ol>',
     answer4: '<ul>',
-    answer: 4
+    answer: 3
   },
 ];
 var correctAnswer = 10;
 var maxQuestions = 7;
 var time = 40;
+
 // Timer function
-function timer() {
+var timer = function () {
   var x = time--;
-  if (time < 40) {
+  if (time < 75) {
     countdownEL.innerHTML = x;
   }
   if (x < 1) {
     localStorage.setItem("mostRecentScore", score);
-    return window.location.href = "endscreen.html";
+    window.location.href = "endscreen.html";
   }
 };
 // Timer interval to 1 second
-setInterval("timer()", 1000);
+setInterval(timer, 1000);
+
 // Setting up the game when someone clicks on the start button
 function startGame() {
   questionCounter = 0;
   score = 0;
   time = 40;
   timer();
-  availableQuestions = [...questions];
+  availableQuestions =  Array.from(questions);
   console.log(availableQuestions);
   getNextQuestion();
 }
+
 // Function to get the next question 
 function getNextQuestion() {
   questionCounter++;
   questionCountInfo.innerText = questionCounter + "/" + maxQuestions;
   // When player reaches 7 questions their score will be save to local storage and they will be reverted to the endscreen
-  if (questionCounter === maxQuestions) {
+  if (questionCounter === maxQuestions + 1) {
     localStorage.setItem("mostRecentScore", score);
-    return window.location.href = "endscreen.html";
+    window.location.href = "endscreen.html";
   }
   // Randomizing each question chosen from the questions array 
   var questionIndex = Math.floor(Math.random() * availableQuestions.length);
@@ -221,7 +225,7 @@ function getNextQuestion() {
   question.innerText = currentQuestion.question;
   // Checking to make sure the answer the user chose was correct
   answers.forEach(function (answer) {
-    var number = answer.dataset['number'];
+    var number = answer.dataset.number;
     answer.innerText = currentQuestion["answer" + number];
   });
 
@@ -229,11 +233,12 @@ function getNextQuestion() {
   
   correctAnswer = true;
 }
+
 // Function to add score and time penalty/reward
 answers.forEach(function (answer) {
   answer.addEventListener("click", function (event) {
     var selected = event.target;
-    var selectedAnswer = selected.dataset["number"];
+    var selectedAnswer = selected.dataset.number;
     console.log(selectedAnswer == currentQuestion.answer);
     // If answer is correct score/timer will increase
     if ((selectedAnswer == currentQuestion.answer) === true) {
