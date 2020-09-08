@@ -197,7 +197,7 @@ var timer = function () {
   }
 };
 // Timer interval to 1 second
-setInterval(timer, 5000);
+setInterval(timer, 1000);
 
 // Setting up the game when someone clicks on the start button
 function startGame() {
@@ -262,5 +262,7 @@ answers.forEach(function (answer) {
 
 // Display 0 in the score HUD at beginning
 scoreInfo.innerText = score;
+// Display 40 in timer HUD at beginnning
+countdownEL.innerText = time;
 
 startGame();
