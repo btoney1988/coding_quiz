@@ -197,7 +197,7 @@ var timer = function () {
   }
 };
 // Timer interval to 1 second
-setInterval(timer, 1000);
+setInterval(timer, 5000);
 
 // Setting up the game when someone clicks on the start button
 function startGame() {
@@ -205,7 +205,7 @@ function startGame() {
   score = 0;
   time = 40;
   timer();
-  availableQuestions =  Array.from(questions);
+  availableQuestions = Array.from(questions);
   console.log(availableQuestions);
   getNextQuestion();
 }
@@ -216,6 +216,9 @@ function getNextQuestion() {
   questionCountInfo.innerText = questionCounter + "/" + maxQuestions;
   // When player reaches 7 questions their score will be save to local storage and they will be reverted to the endscreen
   if (questionCounter === maxQuestions + 1) {
+    if (time >= 55) {
+      score += 10
+    }
     localStorage.setItem("mostRecentScore", score);
     window.location.href = "endscreen.html";
   }
@@ -230,7 +233,7 @@ function getNextQuestion() {
   });
 
   availableQuestions.splice(questionIndex, 1);
-  
+
   correctAnswer = true;
 }
 
@@ -242,14 +245,15 @@ answers.forEach(function (answer) {
     console.log(selectedAnswer == currentQuestion.answer);
     // If answer is correct score/timer will increase
     if ((selectedAnswer == currentQuestion.answer) === true) {
-      score = score + 10;
-      time = time + 3;
+      score += 10;
+      time += 5;
     }
     // If answer is wrong score/timer will decrease 
     else {
-      score = score - 3;
-      time = time - 3;
+      score -= 3;
+      time -= 3;
     }
+
     scoreInfo.innerText = score;
 
     getNextQuestion();
