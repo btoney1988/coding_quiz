@@ -4,6 +4,8 @@ var submitButton = document.getElementById("submit");
 var finalScore = document.getElementById("final-score");
 var mostRecentScore = localStorage.getItem("mostRecentScore");
 var highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+var startButton = document.getElementById("start-button");
+var homeButton = document.getElementById("home-button");
 
 console.log(highScores);
 
@@ -37,9 +39,9 @@ document.querySelector("form").onsubmit = function (event) {
 };
 
 // Buttons will revert to correct page
-$("#start-button").click(function () {
+startButton.addEventListener("click", function () {
   window.location.href = "quiz.html";
 });
-$("#home-button").click(function () {
+homeButton.addEventListener("click", function () {
   window.location.href = "index.html";
 });

@@ -18,4 +18,4 @@ $("document").ready(function () {
     // Disable the high score button in order to prevent user from clicking it multiple times
     this.disabled = true;
   });
-});
+})
